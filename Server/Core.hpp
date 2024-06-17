@@ -129,10 +129,10 @@ public:
     }
 
     // Make a transaction
-    std::string makeTransaction(user& buyer, user& seller, size_t prise)
+    std::string makeTransaction(user& buyer, user& seller, size_t price)
     {
         int cur = std::min(buyer.amount_, seller.amount_);
-        int rub = prise * cur;
+        int rub = price * cur;
 
         // Removing currency from proposal
         buyer.amount_ -= cur;
@@ -158,6 +158,7 @@ public:
             seller.name_ + " for " + std::to_string(rub) + " RUB\n";
         seller.history_ += seller.name_ + " sold " + std::to_string(cur) + "$ to " +
             buyer.name_ + " for " + std::to_string(rub) + " RUB\n";
+        quotation += std::to_string(price) + " ";
 
         return "Making transaction between " + buyer.name_ + " and " + seller.name_ + "\n";
     }
@@ -215,6 +216,14 @@ public:
         return mUsers.find(std::stoi(aUserId))->second.history_;
     }
 
+    std::string showQuotation()
+    {
+        if (quotation.length() == 0)
+            return "There were no deals yet\n";
+        else
+            return quotation;
+    }
+
     // Check for sellers or buyers
     bool hasSellers()
     {
@@ -232,6 +241,8 @@ private:
     std::map<size_t, size_t> buyers;
     // List of seller's IDs and prises
     std::map<size_t, size_t> sellers;
+
+    std::string quotation = "";
 };
 
 Core& GetCore()

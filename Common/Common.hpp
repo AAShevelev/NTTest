@@ -14,6 +14,7 @@ namespace Requests
     static std::string Active = "Act";
     static std::string Reject = "Rej";
     static std::string History = "His";
+    static std::string Quotation = "Quo";
 }
 
 #endif //CLIENSERVERECN_COMMON_HPP

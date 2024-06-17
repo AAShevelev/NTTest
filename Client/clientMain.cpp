@@ -65,6 +65,7 @@ int main()
                 "3) Show active proposals\n"
                 "4) Remove proposal\n"
                 "5) Show history\n"
+                "6) Show quotation\n"
                 "0) Exit\n"
                 << std::endl;
 
@@ -116,6 +117,12 @@ int main()
                 case 5:
                 {
                     SendMessage(s, my_id, Requests::History);
+                    std::cout << ReadMessage(s);
+                    break;
+                }
+                case 6:
+                {
+                    SendMessage(s, my_id, Requests::Quotation);
                     std::cout << ReadMessage(s);
                     break;
                 }

@@ -95,6 +95,10 @@ public:
             {
                 reply = GetCore().showHistory(j["UserId"]);
             }
+            else if (reqType == Requests::Quotation)
+            {
+                reply = GetCore().showQuotation() + "\n";
+            }
 
             boost::asio::async_write(socket_,
                 boost::asio::buffer(reply, reply.size()),
