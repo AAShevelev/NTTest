@@ -154,6 +154,11 @@ public:
             sellers.erase(seller.id_);
         }
 
+        buyer.history_ += buyer.name_ + " bought " + std::to_string(cur) + "$ from " + 
+            seller.name_ + " for " + std::to_string(rub) + " RUB\n";
+        seller.history_ += seller.name_ + " sold " + std::to_string(cur) + "$ to " +
+            buyer.name_ + " for " + std::to_string(rub) + " RUB\n";
+
         return "Making transaction between " + buyer.name_ + " and " + seller.name_ + "\n";
     }
 
@@ -203,6 +208,11 @@ public:
         }
     
         mUsers.find(id)->second.setProposal("None", 0, 0);
+    }
+
+    std::string showHistory(const std::string& aUserId)
+    {
+        return mUsers.find(std::stoi(aUserId))->second.history_;
     }
 
     // Check for sellers or buyers

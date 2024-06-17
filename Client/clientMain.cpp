@@ -37,7 +37,6 @@ std::string ProcessRegistration(tcp::socket& aSocket)
     std::string name;
     std::cout << "Hello! Enter your name: ";
     std::cin >> name;
-    // Для регистрации Id не нужен, заполним его нулём
     SendMessage(aSocket, "0", Requests::Registration, name);
     return ReadMessage(aSocket);
 }
@@ -55,9 +54,6 @@ int main()
         tcp::socket s(io_service);
         s.connect(*iterator);
 
-        // Мы предполагаем, что для идентификации пользователя будет использоваться ID.
-        // Тут мы "регистрируем" пользователя - отправляем на сервер имя, а сервер возвращает нам ID.
-        // Этот ID далее используется при отправке запросов.
         std::string my_id = ProcessRegistration(s);
 
         while (true)
@@ -67,7 +63,8 @@ int main()
                 "1) Set or change proposal\n"
                 "2) Balance\n"
                 "3) Show active proposals\n"
-                "4) Reject proposal\n"
+                "4) Remove proposal\n"
+                "5) Show history\n"
                 "0) Exit\n"
                 << std::endl;
 
@@ -113,6 +110,12 @@ int main()
                 case 4:
                 {
                     SendMessage(s, my_id, Requests::Reject);
+                    std::cout << ReadMessage(s);
+                    break;
+                }
+                case 5:
+                {
+                    SendMessage(s, my_id, Requests::History);
                     std::cout << ReadMessage(s);
                     break;
                 }

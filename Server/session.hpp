@@ -91,6 +91,10 @@ public:
                 GetCore().Reject(j["UserId"]);
                 reply = "Removed\n";
             }
+            else if (reqType == Requests::History)
+            {
+                reply = GetCore().showHistory(j["UserId"]);
+            }
 
             boost::asio::async_write(socket_,
                 boost::asio::buffer(reply, reply.size()),

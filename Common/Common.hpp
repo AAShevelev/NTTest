@@ -13,6 +13,7 @@ namespace Requests
     static std::string Balance = "Bal";
     static std::string Active = "Act";
     static std::string Reject = "Rej";
+    static std::string History = "His";
 }
 
 #endif //CLIENSERVERECN_COMMON_HPP

@@ -8,7 +8,8 @@ class user
 	public:
 	string name_;
 	size_t id_ = 0;
-	string status_ = "";
+	string status_ = "None";
+	string history_ = "Your history: \n";
 
 	//Proposal
 	size_t amount_ = 0;

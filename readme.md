@@ -22,5 +22,8 @@
 4) Show active proposals
 Показать текущие заявки.
 
-5) Reject proposal
+5) Remove proposal
 Удалить активную заявку
+
+6) Show history
+Показать историю операций для данного пользователя
