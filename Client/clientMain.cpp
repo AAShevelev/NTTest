@@ -81,7 +81,7 @@ int main()
                         "3) Return\n";
                     short option;
                     std::cin >> option;
-                    if (option != 2 and option != 1) break;
+                    if (option != 2 && option != 1) break;
                     std::cout << "Enter amount and price\n";
                     std::string am, pr;
                     std::cin >> am >> pr;
